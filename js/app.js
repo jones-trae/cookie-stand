@@ -72,6 +72,27 @@ function renderAllLocations() {
     }
 }
 
+function makeTheFooter() {
+  const tfootElem = _makeElement('tfoot', locationsTable, null);
+  const rowElem = _makeElement('tr', tfootElem, null);
+  _makeElement('th', rowElem, 'Hourly Total');
+  let hourlyTotal = 0;
+  let grandTotal = 0;
+  for (let i = 0; i < hoursOfOperation; i++) {
+    for (let j = 0; j < Location.allLocations.length; j++) {
+      let currentLocation = Location.allLocations[j];
+      currentLocation.hourlySalesArray[i];
+      hourlyTotal += currentLocation.hourlySalesArray[i]
+    }
+    _makeElement('td', rowElem, hourlyTotal);
+    grandTotal += hourlyTotal;
+    hourlyTotal = 0;
+  }
+  _makeElement('td',rowElem, grandTotal);
+}
+renderAllLocations();
+makeTheFooter();
+
 
   //   const articleElem = _makeElement('article', locationsDiv, null);
   //   _makeElement('h3', articleElem, location.location);
