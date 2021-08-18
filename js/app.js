@@ -29,10 +29,10 @@ Location.prototyppe.fillHourlySalesArray = function () {
 }
 
 const seattle = new Location('Seattle', 23, 65, 6.3);
-const tokyo = new Location();
-const dubai = new Location();
-const paris = new Location();
-const lima = new Location();
+const tokyo = new Location('Tokyo', 3, 24, 1.2);
+const dubai = new Location('Dubai', 11, 38, 3.7);
+const paris = new Location('Paris', 20, 38, 2.3);
+const lima = new Location('Lima', 2, 16, 4.6);
 
 function fillHourlySalesArrayAllLocations() {
   for (let i = 0; i < Location.allLocations.length; i++) {
@@ -71,6 +71,27 @@ function renderAllLocations() {
     Location.allLocations[i].renderSingLocation(tbodyElem);
     }
 }
+
+function makeTheFooter() {
+  const tfootElem = _makeElement('tfoot', locationsTable, null);
+  const rowElem = _makeElement('tr', tfootElem, null);
+  _makeElement('th', rowElem, 'Hourly Total');
+  let hourlyTotal = 0;
+  let grandTotal = 0;
+  for (let i = 0; i < hoursOfOperation; i++) {
+    for (let j = 0; j < Location.allLocations.length; j++) {
+      let currentLocation = Location.allLocations[j];
+      currentLocation.hourlySalesArray[i];
+      hourlyTotal += currentLocation.hourlySalesArray[i]
+    }
+    _makeElement('td', rowElem, hourlyTotal);
+    grandTotal += hourlyTotal;
+    hourlyTotal = 0;
+  }
+  _makeElement('td',rowElem, grandTotal);
+}
+renderAllLocations();
+makeTheFooter();
 
 
   //   const articleElem = _makeElement('article', locationsDiv, null);
