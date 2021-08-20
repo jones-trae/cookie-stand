@@ -10,7 +10,7 @@ function Location(city, minCust, maxCust, avgPH, ) {
   this.city = city;
   this.minCust = minCust;
   this.maxCust = maxCust;
-  this. avgPC = avgPC;
+  this.avgPC = avgPC;
   this.hourlySalesArray = [];
 
   Location.allLocations.push(this);
@@ -21,7 +21,7 @@ Location.prototype.randomNumberOfCustomers = function() {
   return Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
 }
 
-Location.prototyppe.fillHourlySalesArray = function () {
+Location.prototype.fillHourlySalesArray = function () {
   for (let i = 0; i < hoursOfOperation.length; i++ ) {
   let salesPerHour = this.randomNumberOfCustomers() * this.avgPC;
   this.hourlySalesArray.push(Math.ceil(salesPerHour));
